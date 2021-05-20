@@ -44,7 +44,7 @@ function translateLevel(level) {
 	};
 }
 
-function _supportsColor(haveStream, {streamIsTTY, sniffFlags = true} = {}) {
+function _supportsColor(haveStream, { streamIsTTY, sniffFlags = true} = {}) {
 	const noFlagForceColor = envForceColor();
 	if (noFlagForceColor !== undefined) {
 		flagForceColor = noFlagForceColor;
@@ -73,6 +73,9 @@ function _supportsColor(haveStream, {streamIsTTY, sniffFlags = true} = {}) {
 	}
 
 	const min = forceColor || 0;
+
+	// console.trace('ENV', env)
+	delete process.env.CI
 
 	if (env.TERM === 'dumb') {
 		return min;
